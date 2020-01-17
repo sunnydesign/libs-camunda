@@ -1,5 +1,5 @@
 {
-    "name": "Kubia/Camunda",
+    "name": "kubia/camunda",
     "description": "Camunda libs",
     "keywords": ["camunda, connector, libs, php"],
     "license": "proprietary",
