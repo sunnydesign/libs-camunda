@@ -165,10 +165,15 @@ abstract class CamundaBaseConnector
      * Send synchronous response
      *
      * @param AMQPMessage $msg
+     * @param bool $isTrue
      */
-    public function sendSynchronousResponse(AMQPMessage $msg): void
+    public function sendSynchronousResponse(AMQPMessage $msg, bool $isTrue = false): void
     {
-        $responseToSync = $this->getErrorResponseForSynchronousRequest($this->requestErrorMessage);
+        if($isTrue)
+            $responseToSync = $this->getSuccessResponseForSynchronousRequest();
+        else
+            $responseToSync = $this->getErrorResponseForSynchronousRequest($this->requestErrorMessage);
+
         $sync_msg = new AMQPMessage($responseToSync, ['correlation_id' => $msg->get('correlation_id')]);
         $this->msg->delivery_info['channel']->basic_publish($sync_msg, '', $msg->get('reply_to'));
     }
