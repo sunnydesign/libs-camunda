@@ -7,7 +7,7 @@ use Camunda\Service\ProcessInstanceService;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Exception\AMQPRuntimeException;
 use PhpAmqpLib\Message\AMQPMessage;
-use Quancy\Logger\Logger;
+use Kubia\Logger\Logger;
 
 /**
  * Abstract Class CamundaBaseConnector

@@ -21,11 +21,11 @@
         "ext-pcntl": "*",
         "endpot/camunda-rest-client": "^1.1",
         "php-amqplib/php-amqplib": "2.11.0",
-        "quancy/logger": "0.1"
+        "kubia/logger": "0.2"
     },
     "autoload": {
         "psr-4": {
-            "Quancy\\Logger\\": "src/Quancy/Logger",
+            "Kubia\\Logger\\": "src/Kubia/Logger",
             "Kubia\\": "src/Kubia"
         }
     }
