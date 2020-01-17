@@ -114,7 +114,7 @@ abstract class CamundaBaseConnector
         if(!$this->headers) {
             $logMessage = '`headers` not is set in incoming message';
             Logger::log($logMessage, 'input', $this->rmqConfig['queue'], $this->logOwner, 1);
-            //exit(1);
+            exit(1);
         }
 
         // Unsafe params
@@ -122,7 +122,7 @@ abstract class CamundaBaseConnector
             if(!isset($this->headers[$paramName])) {
                 $logMessage = '`' . $paramName . '` param not is set in incoming message';
                 Logger::log($logMessage, 'input', $this->rmqConfig['queue'], $this->logOwner, 1);
-                //exit(1);
+                exit(1);
             }
         }
     }
