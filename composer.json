@@ -1,0 +1,32 @@
+{
+    "name": "Kubia/Camunda",
+    "description": "Camunda libs",
+    "keywords": ["camunda, connector, libs, php"],
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Andrey Mokretsov",
+            "email": "am@kubia.com",
+            "homepage": "https://gitlab.com/am20"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://lib.kubia.dev"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.0",
+        "ext-pcntl": "*",
+        "endpot/camunda-rest-client": "^1.1",
+        "php-amqplib/php-amqplib": "2.11.0",
+        "quancy/logger": "0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Quancy\\Logger\\": "src/Quancy/Logger",
+            "Kubia\\": "src/Kubia"
+        }
+    }
+}
