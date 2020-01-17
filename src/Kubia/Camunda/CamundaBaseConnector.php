@@ -162,6 +162,18 @@ abstract class CamundaBaseConnector
     }
 
     /**
+     * Send synchronous response
+     *
+     * @param AMQPMessage $msg
+     */
+    public function sendSynchronousResponse(AMQPMessage $msg): void
+    {
+        $responseToSync = $this->getErrorResponseForSynchronousRequest($this->requestErrorMessage);
+        $sync_msg = new AMQPMessage($responseToSync, ['correlation_id' => $msg->get('correlation_id')]);
+        $this->msg->delivery_info['channel']->basic_publish($sync_msg, '', $msg->get('reply_to'));
+    }
+
+    /**
      * Close connection
      */
     public function cleanupConnection(): void
