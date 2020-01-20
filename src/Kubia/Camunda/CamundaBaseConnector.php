@@ -92,6 +92,8 @@ abstract class CamundaBaseConnector
         $this->processVariables = $getVariablesService->getVariableList($processInstanceId, $getVariablesRequest);
 
         if($getVariablesService->getResponseCode() != 200) {
+            $this->processVariables = null;
+
             $logMessage = sprintf(
                 "Process variables from process instance <%s> not received, because `%s`",
                 $processInstanceId,
