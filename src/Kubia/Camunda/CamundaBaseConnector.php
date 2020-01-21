@@ -132,12 +132,14 @@ abstract class CamundaBaseConnector
     /**
      * Get formatted success response
      * for synchronous request
+     * @param string $processInstanceId
      * @return string
      */
-    public function getSuccessResponseForSynchronousRequest(): string
+    public function getSuccessResponseForSynchronousRequest(string $processInstanceId): string
     {
         $response = [
-            'success' => true
+            'success' => true,
+            'camundaProcessInstanceId' => $processInstanceId
         ];
 
         return json_encode($response);
@@ -165,14 +167,14 @@ abstract class CamundaBaseConnector
 
     /**
      * Send synchronous response
-     *
      * @param AMQPMessage $msg
-     * @param bool $isTrue
+     * @param bool $success
+     * @param string $processInstanceId
      */
-    public function sendSynchronousResponse(AMQPMessage $msg, bool $isTrue = false): void
+    public function sendSynchronousResponse(AMQPMessage $msg, bool $success = false, string $processInstanceId = null): void
     {
-        if($isTrue)
-            $responseToSync = $this->getSuccessResponseForSynchronousRequest();
+        if($success)
+            $responseToSync = $this->getSuccessResponseForSynchronousRequest($processInstanceId);
         else
             $responseToSync = $this->getErrorResponseForSynchronousRequest($this->requestErrorMessage);
 
