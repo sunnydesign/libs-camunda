@@ -130,6 +130,25 @@ abstract class CamundaBaseConnector
     }
 
     /**
+     * if synchronous mode
+     * add correlation id and temporary queue
+     */
+    function mixRabbitCorrelationInfo(): void
+    {
+        if($this->msg->has('correlation_id') && $this->msg->has('reply_to')) {
+            $this->updatedVariables['rabbitCorrelationId'] = [
+                'value' => $this->msg->get('correlation_id'),
+                'type'  => 'string',
+            ];
+            $this->updatedVariables['rabbitCorrelationReplyTo'] = [
+                'value' => $this->msg->get('reply_to'),
+                'type'  => 'string',
+            ];
+        }
+    }
+
+
+    /**
      * Get formatted success response
      * for synchronous request
      * @param string $processInstanceId
