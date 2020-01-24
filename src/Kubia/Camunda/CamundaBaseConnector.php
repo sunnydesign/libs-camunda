@@ -213,8 +213,8 @@ abstract class CamundaBaseConnector
             Logger::elastic('bpm',
                 'started',
                 'error',
-                $this->data ?? [],
-                [],
+                $this->data ?? (object)[],
+                (object)[],
                 ['type' => 'system', 'message' => $message],
                 $this->channel,
                 $this->rmqConfig['queueLog']
