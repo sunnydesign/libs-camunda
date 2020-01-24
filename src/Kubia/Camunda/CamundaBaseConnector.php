@@ -223,7 +223,7 @@ abstract class CamundaBaseConnector
             Logger::elastic('bpm',
                 'in progress',
                 'error',
-                $this->message['data'] ?? (object)[],
+                (object)($this->message['data'] ?? []),
                 (object)[],
                 ['type' => 'system', 'message' => $message],
                 $this->channelLog,
