@@ -81,9 +81,11 @@ abstract class CamundaBaseConnector
         $this->camundaUrl = sprintf($this->camundaConfig['apiUrl'], $this->camundaConfig['apiLogin'], $this->camundaConfig['apiPass']);
         $this->connection = $connection;
         $this->channel = $this->connection->channel();
-        $this->connectionLog = $connectionLog;
-        $this->channelLog = $connectionLog->channel();
-        $this->channelLog->confirm_select(); // change channel mode
+        if($this->rmqConfig['logging']) {
+            $this->connectionLog = $connectionLog;
+            $this->channelLog = $connectionLog->channel();
+            $this->channelLog->confirm_select(); // change channel mode
+        }
     }
 
     /**
@@ -219,7 +221,7 @@ abstract class CamundaBaseConnector
     {
         Logger::stdout($message, 'input', $this->rmqConfig['queue'], $this->logOwner, 1);
 
-        if(isset($this->rmqConfig['queueLog'])) {
+        if($this->rmqConfig['logging']) {
             Logger::elastic('bpm',
                 'in progress',
                 'error',
