@@ -31,7 +31,7 @@ Camunda Libs
 - Abstract Class CamundaBaseConnector
 
 [unreleased]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.4
-[0.3]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.4
+[0.4]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.4
 [0.3]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.3
 [0.2]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.2
 [0.1]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.1
