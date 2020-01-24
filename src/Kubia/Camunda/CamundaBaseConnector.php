@@ -21,6 +21,12 @@ abstract class CamundaBaseConnector
     /** @var \PhpAmqpLib\Channel\AMQPChannel */
     public $channel;
 
+    /** @var \PhpAmqpLib\Connection\AMQPStreamConnection */
+    public $connectionLog;
+
+    /** @var \PhpAmqpLib\Channel\AMQPChannel */
+    public $channelLog;
+
     /** @var \PhpAmqpLib\Message\AMQPMessage */
     public $msg;
 
@@ -63,10 +69,11 @@ abstract class CamundaBaseConnector
     /**
      * CamundaBaseConnector constructor.
      * @param AMQPStreamConnection $connection
+     * @param AMQPStreamConnection $connectionLog
      * @param array $camundaConfig
      * @param array $rmqConfig
      */
-    public function __construct(AMQPStreamConnection &$connection, array $camundaConfig, array $rmqConfig)
+    public function __construct(AMQPStreamConnection &$connection, AMQPStreamConnection $connectionLog, array $camundaConfig, array $rmqConfig)
     {
         $this->camundaConfig = $camundaConfig;
         $this->rmqConfig = $rmqConfig;
@@ -74,6 +81,8 @@ abstract class CamundaBaseConnector
         $this->camundaUrl = sprintf($this->camundaConfig['apiUrl'], $this->camundaConfig['apiLogin'], $this->camundaConfig['apiPass']);
         $this->connection = $connection;
         $this->channel = $this->connection->channel();
+        $this->connectionLog = connectionLog;
+        $this->channelLog = $connectionLog->channel();
     }
 
     /**
@@ -216,7 +225,7 @@ abstract class CamundaBaseConnector
                 $this->data ?? (object)[],
                 (object)[],
                 ['type' => 'system', 'message' => $message],
-                $this->channel,
+                $this->channelLog,
                 $this->rmqConfig['queueLog']
             );
         }
