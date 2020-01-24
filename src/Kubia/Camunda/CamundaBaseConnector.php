@@ -208,15 +208,18 @@ abstract class CamundaBaseConnector
     public function logError($message): void
     {
         Logger::stdout($message, 'input', $this->rmqConfig['queue'], $this->logOwner, 1);
-        Logger::elastic('bpm',
-            'started',
-            'error',
-            $this->data ?? [],
-            [],
-            ['type' => 'system', 'message' => $message],
-            $this->channel,
-            $this->rmqConfig['queueLog']
-        );
+
+        if(isset($this->rmqConfig['queueLog'])) {
+            Logger::elastic('bpm',
+                'started',
+                'error',
+                $this->data ?? [],
+                [],
+                ['type' => 'system', 'message' => $message],
+                $this->channel,
+                $this->rmqConfig['queueLog']
+            );
+        }
     }
 
     /**
