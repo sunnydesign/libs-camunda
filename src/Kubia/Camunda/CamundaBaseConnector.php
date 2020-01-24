@@ -83,6 +83,7 @@ abstract class CamundaBaseConnector
         $this->channel = $this->connection->channel();
         $this->connectionLog = connectionLog;
         $this->channelLog = $connectionLog->channel();
+        $this->channelLog->confirm_select(); // change channel mode
     }
 
     /**
