@@ -81,7 +81,7 @@ abstract class CamundaBaseConnector
         $this->camundaUrl = sprintf($this->camundaConfig['apiUrl'], $this->camundaConfig['apiLogin'], $this->camundaConfig['apiPass']);
         $this->connection = $connection;
         $this->channel = $this->connection->channel();
-        $this->connectionLog = connectionLog;
+        $this->connectionLog = $connectionLog;
         $this->channelLog = $connectionLog->channel();
         $this->channelLog->confirm_select(); // change channel mode
     }
