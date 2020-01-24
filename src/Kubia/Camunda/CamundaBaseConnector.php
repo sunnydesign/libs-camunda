@@ -203,9 +203,9 @@ abstract class CamundaBaseConnector
 
     /**
      * Logging if system error
-     * @param $message
+     * @param string $message
      */
-    public function logError($message): void
+    public function logError(string $message): void
     {
         Logger::stdout($message, 'input', $this->rmqConfig['queue'], $this->logOwner, 1);
 
