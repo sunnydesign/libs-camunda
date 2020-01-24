@@ -7,6 +7,11 @@ Camunda Libs
 ### Planned
 - Nothing
 
+## [0.4] - 2020-01-24
+
+### Fixed
+- Fixed endless loop `Broken pipe or closed connection`
+
 ## [0.3] - 2020-01-24
 
 ### Added
@@ -25,7 +30,8 @@ Camunda Libs
 ### Added
 - Abstract Class CamundaBaseConnector
 
-[unreleased]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.3
+[unreleased]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.4
+[0.3]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.4
 [0.3]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.3
 [0.2]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.2
 [0.1]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.1
