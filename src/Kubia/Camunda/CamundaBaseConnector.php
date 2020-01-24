@@ -69,11 +69,11 @@ abstract class CamundaBaseConnector
     /**
      * CamundaBaseConnector constructor.
      * @param AMQPStreamConnection $connection
-     * @param AMQPStreamConnection $connectionLog
+     * @param $connectionLog
      * @param array $camundaConfig
      * @param array $rmqConfig
      */
-    public function __construct(AMQPStreamConnection &$connection, AMQPStreamConnection $connectionLog, array $camundaConfig, array $rmqConfig)
+    public function __construct(AMQPStreamConnection &$connection, $connectionLog, array $camundaConfig, array $rmqConfig)
     {
         $this->camundaConfig = $camundaConfig;
         $this->rmqConfig = $rmqConfig;
