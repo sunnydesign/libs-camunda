@@ -99,7 +99,7 @@ abstract class CamundaBaseConnector
                 $processInstanceId,
                 $getVariablesService->getResponseContents()->message ?? $this->requestErrorMessage
             );
-            Logger::log($logMessage, 'input', $this->rmqConfig['queue'], $this->logOwner, 1 );
+            $this->logError($logMessage);
 
             return false;
         } else {
@@ -115,7 +115,7 @@ abstract class CamundaBaseConnector
         // Headers
         if(!$this->headers) {
             $logMessage = '`headers` not is set in incoming message';
-            Logger::log($logMessage, 'input', $this->rmqConfig['queue'], $this->logOwner, 1);
+            $this->logError($logMessage);
             exit(1);
         }
 
@@ -123,7 +123,7 @@ abstract class CamundaBaseConnector
         foreach ($this->unsafeHeadersParams as $paramName) {
             if(!isset($this->headers[$paramName])) {
                 $logMessage = '`' . $paramName . '` param not is set in incoming message';
-                Logger::log($logMessage, 'input', $this->rmqConfig['queue'], $this->logOwner, 1);
+                $this->logError($logMessage);
                 exit(1);
             }
         }
@@ -202,6 +202,24 @@ abstract class CamundaBaseConnector
     }
 
     /**
+     * Logging if system error
+     * @param $message
+     */
+    public function logError($message): void
+    {
+        Logger::stdout($message, 'input', $this->rmqConfig['queue'], $this->logOwner, 1);
+        Logger::elastic('bpm',
+            'started',
+            'error',
+            $this->data ?? [],
+            [],
+            ['type' => 'system', 'message' => $message],
+            $this->channel,
+            $this->rmqConfig['queueLog']
+        );
+    }
+
+    /**
      * Close connection
      */
     public function cleanupConnection(): void
@@ -233,7 +251,7 @@ abstract class CamundaBaseConnector
             try {
                 register_shutdown_function([$this, 'shutdown']);
 
-                Logger::log('Waiting for messages. To exit press CTRL+C', 'input', $this->rmqConfig['queue'], $this->logOwner, 0);
+                Logger::stdout('Waiting for messages. To exit press CTRL+C', 'input', $this->rmqConfig['queue'], $this->logOwner, 0);
 
                 $this->channel = $this->connection->channel();
                 $this->channel->confirm_select(); // change channel mode to confirm mode

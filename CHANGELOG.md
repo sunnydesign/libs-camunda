@@ -7,6 +7,14 @@ Camunda Libs
 ### Planned
 - Nothing
 
+## [0.3] - 2020-01-24
+
+### Added
+- Added logging to elasticsearch
+
+### Changed
+- Changed kubia/logger version from 0.2 to 0.3
+
 ## [0.2] - 2020-01-21
 
 ### Added

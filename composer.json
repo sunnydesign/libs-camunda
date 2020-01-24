@@ -21,7 +21,7 @@
         "ext-pcntl": "*",
         "endpot/camunda-rest-client": "^1.1",
         "php-amqplib/php-amqplib": "2.11.0",
-        "kubia/logger": "0.2"
+        "kubia/logger": "0.3"
     },
     "autoload": {
         "psr-4": {
