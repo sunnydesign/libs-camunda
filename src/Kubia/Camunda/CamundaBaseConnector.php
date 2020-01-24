@@ -211,7 +211,7 @@ abstract class CamundaBaseConnector
 
         if(isset($this->rmqConfig['queueLog'])) {
             Logger::elastic('bpm',
-                'started',
+                'in progress',
                 'error',
                 $this->data ?? (object)[],
                 (object)[],
