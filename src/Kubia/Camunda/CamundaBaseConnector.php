@@ -129,7 +129,7 @@ abstract class CamundaBaseConnector
      */
     public function getProcessVariables(): bool
     {
-        $processInstanceId = $this->headers['camundaProcessInstanceId'];
+        $processInstanceId = $this->headers['camundaProcessInstanceId'] ?? '';
 
         // Get process variables request
         $getVariablesRequest = (new ProcessInstanceRequest())

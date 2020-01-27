@@ -7,6 +7,11 @@ Camunda Libs
 ### Planned
 - Nothing
 
+## [0.5] - 2020-01-24
+
+### Fixed
+- Fixed PHP Notice: `Undefined index: camundaProcessInstanceId`
+
 ## [0.4] - 2020-01-24
 
 ### Fixed
@@ -30,7 +35,8 @@ Camunda Libs
 ### Added
 - Abstract Class CamundaBaseConnector
 
-[unreleased]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.4
+[unreleased]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.5
+[0.5]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.5
 [0.4]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.4
 [0.3]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.3
 [0.2]: https://gitlab.com/quancy-core/libs-camunda/-/tags/0.2
