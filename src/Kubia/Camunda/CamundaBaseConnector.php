@@ -319,7 +319,7 @@ abstract class CamundaBaseConnector
                     usleep($this->rmqConfig['tickTimeout']);
                 }
             } catch (\Exception $e) {
-                Logger::stdout($e->getMessage(), 'input', $this->rmqConfig['queue'], $this->logOwner, 0);
+                Logger::stdout($e->getMessage(), 'input', $this->rmqConfig['queue'], $this->logOwner, 1);
                 $this->cleanupConnection();
                 usleep($this->rmqConfig['reconnectTimeout']);
             }
