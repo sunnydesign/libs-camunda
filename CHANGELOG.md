@@ -7,12 +7,12 @@ Camunda Libs
 ### Planned
 - Nothing
 
-## [0.5] - 2020-01-24
+## [0.5] - 2020-01-27
 
 ### Fixed
 - Fixed PHP Notice: `Undefined index: camundaProcessInstanceId`
 
-## [0.4] - 2020-01-24
+## [0.4] - 2020-01-27
 
 ### Fixed
 - Fixed endless loop `Broken pipe or closed connection`
